@@ -12,14 +12,19 @@
       <p>Last-updated:<span id="updated"></span></p>
     </div>
     <script>
-      const apiKey = "840af1a93ae24e18a4b55232233008";
+      const fs = require('fs');
+      fs.readFile('api.txt',(err,data)=> {
+        if (err) throw err;
+
+        console.log(data.toString());
+      })
 
       var place= document.getElementById("location");
       var temp = document.getElementById("temp");
       var updated = document.getElementById("updated");
 
       fetch(
-        "http://api.weatherapi.com/v1/current.json?key=840af1a93ae24e18a4b55232233008&q=nairobi&aqi=no",
+        "http://api.weatherapi.com/v1/current.json?key=data&q=nairobi&aqi=no",
         { mode: "cors" }
       )
         .then(function (response) {
